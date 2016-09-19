@@ -19,6 +19,8 @@ import com.hiteshsahu.imagecomparer.demo.domain.comparer.RgbMotionDetection;
 import com.hiteshsahu.imagecomparer.demo.domain.processor.ImageProcessing;
 import com.hiteshsahu.imagecomparer.demo.model.ImageDataHolder;
 
+import java.util.Random;
+
 public class TestActivity extends AppCompatActivity {
 
     private int firstWidth, firstHeight, secondWidth, secondHeight;
@@ -63,6 +65,7 @@ public class TestActivity extends AppCompatActivity {
                     }
                 });
 
+
         Glide.with(getApplicationContext())
                 .load(R.drawable.test_grey)
                 .asBitmap()
@@ -80,6 +83,56 @@ public class TestActivity extends AppCompatActivity {
 
                     }
                 });
+
+        secondImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (new Random().nextBoolean()) {
+
+                    Glide.with(getApplicationContext())
+                            .load(R.drawable.test_grey)
+                            .asBitmap()
+                            .into(new SimpleTarget<Bitmap>() {
+                                @Override
+                                public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+                                    // you can do something with loaded bitmap here
+
+                                    secondImage.setImageBitmap(resource);
+                                    secondWidth = resource.getWidth();
+                                    secondHeight = resource.getHeight();
+
+                                    ImageDataHolder.getInstance().setSecondRGB(
+                                            ImageProcessing.getArgb(resource, resource.getWidth(), resource.getHeight()));
+
+                                }
+                            });
+
+
+                } else {
+
+                    Glide.with(getApplicationContext())
+                            .load(R.drawable.test)
+                            .asBitmap()
+                            .into(new SimpleTarget<Bitmap>() {
+                                @Override
+                                public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+                                    // you can do something with loaded bitmap here
+
+                                    secondImage.setImageBitmap(resource);
+                                    secondWidth = resource.getWidth();
+                                    secondHeight = resource.getHeight();
+
+                                    ImageDataHolder.getInstance().setSecondRGB(
+                                            ImageProcessing.getArgb(resource, resource.getWidth(), resource.getHeight()));
+
+                                }
+                            });
+                }
+
+            }
+        });
+
 
         findViewById(R.id.compare).setOnClickListener(new View.OnClickListener() {
             @Override
