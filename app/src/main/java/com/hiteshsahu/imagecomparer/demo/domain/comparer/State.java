@@ -4,10 +4,11 @@ package com.hiteshsahu.imagecomparer.demo.domain.comparer;
  * This class is adapted from the web site below. It creates a state object
  * based on the brightness of a RGB image represented by an integer array.
  * http://mindmeat.blogspot.com/2008/11/java-image-comparison.html
- * 
+ *
  * @author Pat Cullen
  * @author Justin Wetherell <phishman3579@gmail.com>
  */
+@Deprecated
 public class State {
 
     private int[] map = null;
@@ -34,7 +35,7 @@ public class State {
 
     /**
      * Get Map of the State.
-     * 
+     *
      * @return integer array of the State.
      */
     public int[] getMap() {
@@ -43,7 +44,7 @@ public class State {
 
     /**
      * Get the width of the State.
-     * 
+     *
      * @return integer representing the width of the state.
      */
     public int getWidth() {
@@ -52,7 +53,7 @@ public class State {
 
     /**
      * Get the height of the State.
-     * 
+     *
      * @return integer representing the height of the state.
      */
     public int getHeight() {

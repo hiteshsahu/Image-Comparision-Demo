@@ -13,6 +13,7 @@ import com.hiteshsahu.imagecomparer.demo.domain.IMotionDetection;
  * 
  * @author Justin Wetherell <phishman3579@gmail.com>
  */
+@Deprecated
 public class LumaMotionDetection implements IMotionDetection {
 
     // private static final String TAG = "LumaMotionDetection";
@@ -24,14 +25,6 @@ public class LumaMotionDetection implements IMotionDetection {
     private static int[] mPrevious = null;
     private static int mPreviousWidth = 0;
     private static int mPreviousHeight = 0;
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public int[] getPrevious() {
-        return ((mPrevious != null) ? mPrevious.clone() : null);
-    }
 
     protected static boolean isDifferent(int[] first, int width, int height) {
         if (first == null) throw new NullPointerException();
@@ -69,6 +62,14 @@ public class LumaMotionDetection implements IMotionDetection {
          * output); }
          */
         return different;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int[] getPrevious() {
+        return ((mPrevious != null) ? mPrevious.clone() : null);
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.hiteshsahu.imagecomparer.demo.domain.comparer;
 
+import android.graphics.Color;
 import android.util.Log;
 
 
@@ -23,14 +24,6 @@ public class RgbMotionDetection {
     private static int[] baseImage = null;
     private static int baseImageWidth = 0;
     private static int baseImageHeight = 0;
-
-    /**
-     * {@inheritDoc}
-     */
-    public int[] getPrevious() {
-        return ((baseImage != null) ? baseImage.clone() : null);
-    }
-
 
     public static void setBaseImage(int[] mPrevious, int mPreviousWidth, int mPreviousHeight) {
         RgbMotionDetection.baseImage = mPrevious;
@@ -62,7 +55,7 @@ public class RgbMotionDetection {
                     totDifferentPixels++;
 
                     // Paint different pixel red
-                    baseImage[ij] = otherPix;
+                    baseImage[ij] = Color.RED;
                 }
             }
         }
@@ -84,6 +77,13 @@ public class RgbMotionDetection {
             }
         }
         return different;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public int[] getPrevious() {
+        return ((baseImage != null) ? baseImage.clone() : null);
     }
 
     /**

@@ -10,6 +10,7 @@ import com.hiteshsahu.imagecomparer.demo.domain.IMotionDetection;
  *
  * @author Justin Wetherell <phishman3579@gmail.com>
  */
+@Deprecated
 public class AggregateLumaMotionDetection implements IMotionDetection {
 
     // private static final String TAG = "AggregateLumaMotionDetection";

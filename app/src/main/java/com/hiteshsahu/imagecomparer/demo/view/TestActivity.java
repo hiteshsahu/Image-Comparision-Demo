@@ -8,6 +8,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -18,6 +19,8 @@ import com.hiteshsahu.imagecomparer.R;
 import com.hiteshsahu.imagecomparer.demo.domain.comparer.RgbMotionDetection;
 import com.hiteshsahu.imagecomparer.demo.domain.processor.ImageProcessing;
 import com.hiteshsahu.imagecomparer.demo.model.ImageDataHolder;
+
+import org.opencv.android.OpenCVLoader;
 
 import java.util.Random;
 
@@ -34,6 +37,12 @@ public class TestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_test);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        if (!OpenCVLoader.initDebug()) {
+            Log.e(this.getClass().getSimpleName(), "  OpenCVLoader.initDebug(), not working.");
+        } else {
+            Log.d(this.getClass().getSimpleName(), "  OpenCVLoader.initDebug(), working.");
+        }
 
         //Detection algo is RGB
         detector = new RgbMotionDetection();

@@ -11,6 +11,7 @@ import android.graphics.Color;
  * @author Pat Cullen
  * @author Justin Wetherell <phishman3579@gmail.com>
  */
+@Deprecated
 public class Comparer {
 
     private State state1 = null;
